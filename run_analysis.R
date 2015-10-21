@@ -1,6 +1,7 @@
 
 require(data.table)
 require(dplyr)
+require(reshape2)
 
 # Read the data set
 
@@ -19,8 +20,8 @@ if (!file.exists(data.archive.path)){
 data.unzipped <- "UCI HAR Dataset"
 data.unzipped.path <- paste0(data.directory, data.unzipped)
 if (!dir.exists(data.unzipped.path)) {
-    unzip(data.unzipped.path, files = NULL, list = FALSE,
-          overwrite = FALSE)
+    unzip(data.archive.path, files = NULL, list = FALSE,
+          overwrite = FALSE, exdir = data.directory)
 }
 
 # OK, data is ready in the proper folder

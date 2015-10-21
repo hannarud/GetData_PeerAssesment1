@@ -31,7 +31,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 4. Include a README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected.
 
 # Steps of analysis
-1. Request the required `data.table` and `dplyr` packages
+1. Request the required `data.table`, `dplyr` and `reshape2` packages
 2. Read the data set:
   * if data directory doesn't exist, it will be created
   * if no proper archive in the directory or if it's unpacked, it will be done

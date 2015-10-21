@@ -30,3 +30,16 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 3. A code book that describes the variables, the data, and any transformations or work that you performed to clean up the data called CodeBook.md
 4. Include a README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected.
 
+# Steps of analysis
+1. Request the required `data.table` and `dplyr` packages
+2. Read the data set:
+  * if data directory doesn't exist, it will be created
+  * if no proper archive in the directory or if it's unpacked, it will be done
+3. Reading and merging is performed. Actually merging here is just concatencating train and test data sets
+  * read and merge subjects numbers (called as `"PERSON_NUMBER"` in the script)
+  * read and merge activity numbers, make it factors (the variable is called `"ACTIVITY_NAME"`)
+  * read the measures data, names of measures are provided in `"data/UCI HAR Dataset/features.txt"`
+  * finally bring all the data obtained together into `tidy.measures` data.table
+4. Extract only the measurements on the mean and standard deviation for each measurement (done with a help of `select` function from `plyr` package)
+5. Finally create tidy data set with the average of each variable for each activity and each subject (done with a help of `melt` and `dcast` functions)
+6. Save the resulting tidy data into the file

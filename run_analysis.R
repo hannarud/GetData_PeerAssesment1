@@ -78,8 +78,6 @@ tidy.measures <- data.table(person.number,
 head(tidy.measures)
 colnames(tidy.measures)
 
-grep("std", colnames(tidy.measures))
-
 # OK, the next step is to extract only the measurements on the mean and standard deviation for each measurement
 tidy.mean.sd <- select(tidy.measures,
                        PERSON_NUMBER,
@@ -90,3 +88,5 @@ tidy.mean.sd <- select(tidy.measures,
 # And finally create tidy data set with the average of each variable for each activity and each subject
 melted.tidy <- melt(data = tidy.mean.sd, id.vars = c("PERSON_NUMBER", "ACTIVITY_NAME"))
 tidy.final <- dcast(melted.tidy, PERSON_NUMBER + ACTIVITY_NAME ~ variable, mean)
+
+write.table(x = tidy.final, file = "data/tidy_data.txt", row.names = FALSE)
